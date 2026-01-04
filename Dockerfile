@@ -1,7 +1,7 @@
-# Use Node.js base image
+# Enhanced FFmpeg API with Noise Reduction
 FROM node:18-slim
 
-# Install FFmpeg and dependencies
+# Install FFmpeg with full codec support
 RUN apt-get update && \
     apt-get install -y ffmpeg && \
     apt-get clean && \
@@ -14,7 +14,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --only=production
+RUN npm ci --only=production
 
 # Copy application code
 COPY server.js ./
